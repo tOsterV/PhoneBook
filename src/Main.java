@@ -1,4 +1,4 @@
-import java.util.Map;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -13,25 +13,20 @@ public class Main {
             System.out.print("> ");
             String input = scanner.nextLine().trim();
 
-            switch (input) {
-                case "exit":
-                    scanner.close();
-                    return;
-                case "all":
-                    showAll();
-                    break;
-                case "help":
-                    helpCommand();
-                    break;
-                default:
-                    processCommand(input);
-                    break;
+            if (input.equals("exit")) {
+                break;
             }
+            processCommand(input);
         }
+        scanner.close();
     }
 
     private static void processCommand(String input) {
-        if (input.startsWith("info ")) {
+        if (input.equals("all")) {
+            showAll();
+        } else if (input.equals("help")) {
+            helpCommand();
+        } else if (input.startsWith("info ")) {
             String number = input.substring(5).trim();
             showInfo(number);
         } else if (input.startsWith("new ")) {
@@ -52,8 +47,8 @@ public class Main {
         if (phoneBook.isEmpty()) {
             System.out.println("Phonebook is empty :(");
         } else {
-            for (Map.Entry<String, Contact> entry : phoneBook.getAllContacts().entrySet()) {
-                System.out.println(entry.getValue());
+            for (Contact contact : phoneBook.getAllContacts()) {
+                System.out.println(contact);
             }
         }
     }
@@ -111,6 +106,7 @@ public class Main {
             System.out.println("Contact doesn't exist");
             return;
         }
+
         Contact contact = phoneBook.getContact(number);
         String oldName = contact.getName();
         phoneBook.updateContactName(number, newName);

@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhoneBook {
+public class Phone {
     private List<Contact> contacts;
 
-    public PhoneBook() {
+    public Phone() {
         this.contacts = new ArrayList<>();
     }
 
