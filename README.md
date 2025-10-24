@@ -11,5 +11,4 @@ What's new in the latest version of the app:
 1) Was Hashmap --> became List+object. 
 2) There was a monolithic structure of the work --> became distributed by classes and, accordingly, by Java files. 
 3) There was direct access to contacts --> began to work according to the principles of OOP, i.e. encapsulation, polymorphism.
- 
-4)There was a direct search for contact --> became linear search. 
+4) There was a direct search for contact --> became linear search. 
