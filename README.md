@@ -6,3 +6,6 @@ A simple sketch of a phone book in Java is presented. Commands represented by th
 5) Deleting a contact. 
 6) Exit from the program. 
 7) Help - help with commands and complete information. 
+
+What's new in the latest version of the app:
+1) Was Hashmap --> became Array+object
