@@ -12,3 +12,7 @@ What's new in the latest version of the app:
 2) There was a monolithic structure of the work --> became distributed by classes and, accordingly, by Java files. 
 3) There was direct access to contacts --> began to work according to the principles of OOP, i.e. encapsulation, polymorphism.
 4) There was a direct search for contact --> became linear search. 
+
+Changes on 31.10.25:
+1) Add logic of SIM-cards.
+2) Add new class (PhoneDataBase).
