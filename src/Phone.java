@@ -1,49 +1,50 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Phone {
-    private List<Contact> contacts;
+    private String simId;
+    private Map<String, Contact> contactsMap;
 
-    public Phone() {
-        this.contacts = new ArrayList<>();
+    public Phone(String simId) {
+        this.simId = simId;
+        this.contactsMap = new HashMap<>();
+    }
+
+    public String getSimId() {
+        return simId;
+    }
+
+    public void addContact(Contact contact) {
+        contactsMap.put(contact.getPhoneNumber(), contact);
     }
 
     public void addContact(String phoneNumber, String name) {
-        contacts.add(new Contact(phoneNumber, name));
+        contactsMap.put(phoneNumber, new Contact(phoneNumber, name));
     }
 
-    public Contact getContact(String phoneNumber) {
-        for (Contact contact : contacts) {
-            if (contact.getPhoneNumber().equals(phoneNumber)) {
-                return contact;
-            }
-        }
-        return null;
+    public void deleteContact(String number) {
+        contactsMap.remove(number);
     }
 
-    public boolean contactExists(String phoneNumber) {
-        return getContact(phoneNumber) != null;
+    public Contact getContact(String number) {
+        return contactsMap.get(number);
     }
 
-    public void deleteContact(String phoneNumber) {
-        Contact contactToRemove = getContact(phoneNumber);
-        if (contactToRemove != null) {
-            contacts.remove(contactToRemove);
-        }
+
+    public Contact[] getAllContacts() {
+        return contactsMap.values().toArray(new Contact[0]);
     }
 
-    public void updateContactName(String phoneNumber, String newName) {
-        Contact contact = getContact(phoneNumber);
+    public boolean contactExists(String number) {
+        return contactsMap.containsKey(number);
+    }
+
+    public void updateContactName(String number, String newName) {
+        Contact contact = contactsMap.get(number);
         if (contact != null) {
             contact.setName(newName);
         }
     }
-
-    public List<Contact> getAllContacts() {
-        return new ArrayList<>(contacts);
-    }
-
     public boolean isEmpty() {
-        return contacts.isEmpty();
+        return contactsMap.isEmpty();
     }
 }
